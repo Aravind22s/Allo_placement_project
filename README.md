@@ -1,8 +1,26 @@
 # Allo Inventory — Reservation System
 
-A race-condition-safe inventory reservation platform for multi-warehouse retail and D2C brands. Built with Next.js, Prisma, PostgreSQL (Supabase), and Redis (Upstash).
-
 **Live URL:** https://YOUR_APP.vercel.app
+
+---
+
+## The Idea
+
+Think of it exactly like booking a movie ticket online.
+
+When you pick your seats on a booking site, those seats are instantly shown as reserved to every other user — even though you haven't paid yet. The site gives you a 10-minute window to complete your payment. During that window nobody else can grab your seats. If you pay within the time, the seats are permanently yours. If you abandon the page or the timer runs out, the seats are automatically released and go back on sale for everyone else.
+
+This system works the same way for physical inventory:
+
+- Customer proceeds to checkout → units are **reserved** for 10 minutes
+- Payment succeeds within 10 minutes → reservation is **confirmed**, stock is permanently decremented
+- Timer runs out or customer cancels → reservation is **released**, units go back to available stock
+
+The hard part is making sure that when two customers try to grab the last unit at the exact same millisecond, only one succeeds. This is the race condition the system is built to prevent.
+
+---
+
+Built with Next.js, Prisma, PostgreSQL (Supabase), and Redis (Upstash).
 
 ---
 
