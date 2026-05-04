@@ -109,7 +109,7 @@ export default function HomePage() {
                         s.available === 0 ||
                         reserving === `${product.id}-${s.warehouseId}`
                       }
-                      onClick={() => reserve(product.id, s.warehouseId)}
+                      onClick={() => Book (product.id, s.warehouseId)}
                     >
                       {reserving === `${product.id}-${s.warehouseId}`
                         ? "Reserving…"
